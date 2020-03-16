@@ -1,3 +1,2 @@
 pytest
 selenium
-num2words

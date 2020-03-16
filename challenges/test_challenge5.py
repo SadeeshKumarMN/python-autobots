@@ -24,11 +24,9 @@ Example: SIDE and ALL OVER would each count towards MISC
 Example Output: REAR END: 2, FRONT END: 7, MINOR DENT/SCRATCHES: 22, UNDERCARRIAGE: 0, MISC: 4
 """
 from pprint import pprint
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.common.exceptions import *
+
+from common.reusablecomponent import ReusableComponent
 
 
 def test_how_many_car_model(driver, wait):
@@ -76,18 +74,4 @@ def test_how_many_damage_type(driver, wait):
     assert sum(car_damage_type_dict.values()) == 100
 
 
-class ReusableComponent:
-    def __init__(self, driver, wait):
-        self.driver = driver
-        self.wait = wait
 
-    def reusable_component(self):
-        self.driver.get('https://www.copart.com/')
-        self.driver.find_element_by_id('input-search').send_keys("porsche" + Keys.ENTER)
-        self.wait.until(
-            EC.presence_of_element_located((By.XPATH, "//select[@name='serverSideDataTable_length']/option[text("
-                                                      ")='100']"))).click()
-        # Achieved FluentWait logic here
-        wait = WebDriverWait(self.driver, 20, poll_frequency=1,
-                             ignored_exceptions=[StaleElementReferenceException])
-        wait.until(EC.visibility_of_element_located((By.XPATH, "//span[contains(.,'MACAN')]")))
