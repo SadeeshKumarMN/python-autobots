@@ -2,29 +2,23 @@
 ******************
 Challenge#4:
 ******************
-write out the code for convert the word representation of a number
-Ex: 2002 should display "two thousand two"
+Display the fibonacci sequence up to a certain number.
+If I want the fibonacci for the 9(input) order of the sequence, I should see 21 and instead of displaying the number 21 in words
+twenty one(output)
 """
-from common.numtowords import num_to_words
+from common.fibonacci import find_fibonacci
 
 
-def test_convert_word_to_string(num):
-    print(num_to_words(num))
+def test_fibonacci(input_number):
+    output = find_fibonacci(input_number)
+    print("The order of fibonacci sequence for the given input# is " + output)
 
 
-# inputs
-test_convert_word_to_string(0)
-test_convert_word_to_string(1)
-test_convert_word_to_string(19)
-test_convert_word_to_string(90)
-test_convert_word_to_string(99)
-test_convert_word_to_string(1234)
-test_convert_word_to_string(2002)
-test_convert_word_to_string(100000)
-test_convert_word_to_string(1000000000)
-test_convert_word_to_string(-1)
-test_convert_word_to_string("A")
-test_convert_word_to_string("1,00")
-test_convert_word_to_string("")
-
-
+test_fibonacci(0)
+test_fibonacci(1)
+test_fibonacci(9)
+test_fibonacci(15)
+test_fibonacci(1234)
+test_fibonacci(1.0)
+test_fibonacci(-1)
+test_fibonacci("A")
